@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseballStatsApi.Applicatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseballStatsApi.Models", "BaseballStatsApi.Models\BaseballStatsApi.Models.csproj", "{C94D4F40-E5E3-4244-BA87-94BDAD952BBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseballStatsApi.Infrastructure", "BaseballStatsApi.Infrastructure\BaseballStatsApi.Infrastructure.csproj", "{5E7F6DF4-2A8B-4255-8AEF-F9E8C9129369}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{C94D4F40-E5E3-4244-BA87-94BDAD952BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C94D4F40-E5E3-4244-BA87-94BDAD952BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C94D4F40-E5E3-4244-BA87-94BDAD952BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E7F6DF4-2A8B-4255-8AEF-F9E8C9129369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E7F6DF4-2A8B-4255-8AEF-F9E8C9129369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E7F6DF4-2A8B-4255-8AEF-F9E8C9129369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E7F6DF4-2A8B-4255-8AEF-F9E8C9129369}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
