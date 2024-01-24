@@ -2,6 +2,6 @@
 
 public class Position
 {
-    public int PositionId { get; set; }
-    public int PositionName { get; set; }
+    public Guid PositionId { get; set; }
+    public string Name { get; set; } = "";
 }

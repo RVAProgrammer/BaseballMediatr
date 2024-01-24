@@ -1,4 +1,4 @@
-﻿namespace BaseballStatsApi.Models;
+﻿namespace BaseballStatsApi.Application.Dtos;
 
 public class Player
 {
@@ -8,8 +8,10 @@ public class Player
     public string Bats { get; set; }
     public string Throws { get; set; }
     public DateTime DateOfBirth { get; set; }
+    public Guid TeamId { get; set; }
+    public string TeamName { get; set; }
+    public Guid PositionId { get; set; }
+    public string PositionName { get; set; }
     
-    public Team Team { get; set; }
-    public Position Position { get; set; }
-    
+
 }
