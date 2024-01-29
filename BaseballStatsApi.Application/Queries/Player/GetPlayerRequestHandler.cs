@@ -36,7 +36,8 @@ public class GetPlayerRequestHandler : IRequestHandler<GetPlayerRequest, Outcome
             PlayerId = player.PlayerId,
             PositionName = player.Position.Name,
             TeamName = player.Team.Name,
-            DateOfBirth = player.DateOfBirth
+            DateOfBirth = player.DateOfBirth,
+            EmailAddress = player.EmailAddress ?? ""
         };
         return new CommonOutcomes.Success<Dtos.Player>(playerDto);
     }
