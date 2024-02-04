@@ -1,23 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
-using BaseballStatsApi.Infrastructure.Exceptions;
+using BaseballStatsApi.Common.Exceptions;
 
-namespace BaseballStatsApi.Infrastructure.ValueObjects;
+namespace BaseballStatsApi.Domain.ValueObjects;
 
 public partial record EmailAddress
 {
-    
     [GeneratedRegex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", RegexOptions.IgnoreCase, "en-US")]
     private static partial Regex EmailRegEx();
+
     public string Value { get; }
 
     public EmailAddress(string emailAddress)
     {
-        if (!IsValidEmail(emailAddress))
+        if (string.IsNullOrEmpty(emailAddress))
         {
-            throw new InvalidEmailException();
+            Value = "";
         }
-        Value = emailAddress;
+        else
+        {
+            if (!IsValidEmail(emailAddress))
+            {
+                throw new InvalidEmailException();
+            }
+
+            Value = emailAddress;
+        }
     }
 
     private static bool IsValidEmail(string email)
@@ -41,5 +49,4 @@ public partial record EmailAddress
     {
         return Value;
     }
-
 }

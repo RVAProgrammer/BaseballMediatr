@@ -1,14 +1,19 @@
-﻿using BaseballStatsApi.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using BaseballStatsApi.Domain;
 
 namespace BaseballStatsApi.Infrastructure.Context;
 
-public class BaseballContext :DbContext
+public class BaseballContext : DbContext
 {
     public BaseballContext(DbContextOptions<BaseballContext> options) : base(options)
     {
-            
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly((typeof(BaseballContext).Assembly));
+    }
+
     public virtual DbSet<Player> Players { get; set; }
     public virtual DbSet<Team> Teams { get; set; }
     public virtual DbSet<Position> Positions { get; set; }

@@ -26,9 +26,11 @@ public class GetAllPlayersRequestHandler : IRequestHandler<GetAllPlayersRequest,
             LastName = x.LastName,
             PlayerId = x.PlayerId,
             PositionName = x.Position.Name,
+            PositionId = x.Position.PositionId,
             TeamName = x.Team.Name,
+            TeamId = x.Team.TeamId,
             DateOfBirth = x.DateOfBirth,
-            EmailAddress = x.EmailAddress
+            EmailAddress = x.EmailAddress.Value
         }).ToList());
     }
 }

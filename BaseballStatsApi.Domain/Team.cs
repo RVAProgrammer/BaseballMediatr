@@ -1,4 +1,4 @@
-namespace BaseballStatsApi.Models;
+namespace BaseballStatsApi.Domain;
 
 public class Team
 {

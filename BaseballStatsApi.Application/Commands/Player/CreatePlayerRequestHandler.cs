@@ -1,4 +1,5 @@
-﻿using BaseballStatsApi.Infrastructure;
+﻿using BaseballStatsApi.Domain.ValueObjects;
+using BaseballStatsApi.Infrastructure;
 using BaseballStatsApi.Infrastructure.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +38,7 @@ public class CreatePlayerHandler : IRequestHandler<CreatePlayerCommand, Outcome>
         }
 
         //TODO: Import automapper
-        var player = new Models.Player
+        var player = new Domain.Player
         {
             Bats = request.Player.Bats,
             Throws = request.Player.Throws,
@@ -46,7 +47,7 @@ public class CreatePlayerHandler : IRequestHandler<CreatePlayerCommand, Outcome>
             DateOfBirth = request.Player.DateOfBirth,
             Team = team,
             Position = position,
-            EmailAddress = request.Player.EmailAddress
+            EmailAddress = new EmailAddress(request.Player.EmailAddress)
         };
         await _dbContext.AddAsync(player, cancellationToken);
         await _dbContext.SaveChangesAsync(cancellationToken);

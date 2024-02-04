@@ -11,7 +11,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BaseballStatsApi.Models\BaseballStatsApi.Models.csproj" />
+      <Folder Include="ValueObjects\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BaseballStatsApi.Domain\BaseballStatsApi.Domain.csproj" />
     </ItemGroup>
 
 </Project>
