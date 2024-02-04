@@ -1,5 +1,4 @@
-﻿using BaseballStatsApi.Domain.ValueObjects;
-
+﻿
 namespace BaseballStatsApi.Domain;
 
 public class Player
@@ -10,7 +9,7 @@ public class Player
     public string Bats { get; set; }
     public string Throws { get; set; }
     public DateTime DateOfBirth { get; set; }
-    public EmailAddress EmailAddress { get; set; }
+    public string EmailAddress { get; set; }
     public Team Team { get; set; }
 
     public Position Position { get; set; }

@@ -11,4 +11,8 @@
       <ProjectReference Include="..\BaseballStatsApi.Common\BaseballStatsApi.Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ValueObjects\" />
+    </ItemGroup>
+
 </Project>

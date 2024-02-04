@@ -1,4 +1,4 @@
-using BaseballStatsApi.Application.Queries.Player;
+using BaseballStatsApi.Application.Dtos;
 using BaseballStatsApi.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var connString = builder.Configuration.GetConnectionString("BaseballConnection");
 builder.Services.AddDbContext<BaseballContext>(x => x.UseSqlServer(connString));
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<GetAllPlayersRequest>());
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<CreatePlayerDto>());
 
 var app = builder.Build();
 

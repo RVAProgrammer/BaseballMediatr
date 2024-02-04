@@ -8,12 +8,6 @@ public class BaseballContext : DbContext
     public BaseballContext(DbContextOptions<BaseballContext> options) : base(options)
     {
     }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfigurationsFromAssembly((typeof(BaseballContext).Assembly));
-    }
-
     public virtual DbSet<Player> Players { get; set; }
     public virtual DbSet<Team> Teams { get; set; }
     public virtual DbSet<Position> Positions { get; set; }
