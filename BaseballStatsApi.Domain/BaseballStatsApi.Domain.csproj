@@ -8,11 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BaseballStatsApi.Common\BaseballStatsApi.Common.csproj" />
+        <ProjectReference Include="..\BaseballStatsApi.Common\BaseballStatsApi.Common.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ValueObjects\" />
+        <Folder Include="ValueObjects\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MediatR.Contracts" Version="2.0.1"/>
     </ItemGroup>
 
 </Project>
