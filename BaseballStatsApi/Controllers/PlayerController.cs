@@ -26,7 +26,7 @@ public class PlayerController : ControllerBase
 
         return response switch
         {
-            CommonOutcomes.Success<List<Player>> result => Ok(result.Data),
+            CommonOutcomes.Success<List<PlayerDto>> result => Ok(result.Data),
             _ => new StatusCodeResult(500)
         };
     }
@@ -38,7 +38,7 @@ public class PlayerController : ControllerBase
 
         return response switch
         {
-            CommonOutcomes.Success<Player> result => Ok(result.Data),
+            CommonOutcomes.Success<PlayerDto> result => Ok(result.Data),
             CommonOutcomes.InvalidData _ => new BadRequestResult(),
             CommonOutcomes.NotFound _ => new NotFoundResult(),
             _ => new StatusCodeResult(500)
@@ -46,9 +46,9 @@ public class PlayerController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] CreatePlayerDto player)
+    public async Task<IActionResult> Post([FromBody] DraftPlayerDto player)
     {
-        var response = await _sender.Send(new CreatePlayerCommand(player));
+        var response = await _sender.Send(new DraftPlayerCommand(player));
 
         return response switch
         {

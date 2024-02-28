@@ -1,4 +1,5 @@
-﻿using BaseballStatsApi.Infrastructure;
+﻿using BaseballStatsApi.Application.Dtos;
+using BaseballStatsApi.Infrastructure;
 using BaseballStatsApi.Infrastructure.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,10 @@ public class GetAllPlayersRequestHandler : IRequestHandler<GetAllPlayersRequest,
 
     public async Task<Outcome> Handle(GetAllPlayersRequest request, CancellationToken cancellationToken)
     {
-        var players = await _dbContext.Players.Include((x=>x.Team)).Include(x=>x.Position).ToListAsync(cancellationToken);
+        var players = await _dbContext.Players.Include((x => x.Team)).Include(x => x.Position)
+            .ToListAsync(cancellationToken);
 
-        return new CommonOutcomes.Success<List<Dtos.Player>>(players.Select(x => new Dtos.Player
+        return new CommonOutcomes.Success<List<PlayerDto>>(players.Select(x => new PlayerDto
         {
             Bats = x.Bats,
             Throws = x.Throws,

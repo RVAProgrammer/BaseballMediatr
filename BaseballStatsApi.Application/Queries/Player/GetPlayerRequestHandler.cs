@@ -1,4 +1,5 @@
-﻿using BaseballStatsApi.Infrastructure;
+﻿using BaseballStatsApi.Application.Dtos;
+using BaseballStatsApi.Infrastructure;
 using BaseballStatsApi.Infrastructure.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,7 @@ public class GetPlayerRequestHandler : IRequestHandler<GetPlayerRequest, Outcome
             return new CommonOutcomes.NotFound();
         }
 
-        var playerDto = new Dtos.Player
+        var playerDto = new PlayerDto
         {
             Bats = player.Bats,
             Throws = player.Throws,
@@ -37,8 +38,8 @@ public class GetPlayerRequestHandler : IRequestHandler<GetPlayerRequest, Outcome
             PositionName = player.Position.Name,
             TeamName = player.Team.Name,
             DateOfBirth = player.DateOfBirth,
-            EmailAddress = player.EmailAddress.Value ?? ""
+            EmailAddress = player.EmailAddress.ToString() ?? ""
         };
-        return new CommonOutcomes.Success<Dtos.Player>(playerDto);
+        return new CommonOutcomes.Success<PlayerDto>(playerDto);
     }
 }

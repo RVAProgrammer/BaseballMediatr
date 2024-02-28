@@ -2,7 +2,7 @@
 
 namespace BaseballStatsApi.Domain;
 
-public class Player
+public class Player : Entity
 {
     public Guid PlayerId { get; set; }
     public string FirstName { get; set; }
@@ -14,5 +14,4 @@ public class Player
     public Team Team { get; set; }
 
     public Position Position { get; set; }
-    
 }

@@ -1,4 +1,5 @@
-﻿using BaseballStatsApi.Domain.ValueObjects;
+﻿using BaseballStatsApi.Application.DomainEvents;
+using BaseballStatsApi.Domain.ValueObjects;
 using BaseballStatsApi.Infrastructure;
 using BaseballStatsApi.Infrastructure.Context;
 using MediatR;
@@ -6,22 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BaseballStatsApi.Application.Commands.Player;
 
-public class CreatePlayerHandler : IRequestHandler<CreatePlayerCommand, Outcome>
+public class DraftPlayerCommandHandler : IRequestHandler<DraftPlayerCommand, Outcome>
 {
     private readonly BaseballContext _dbContext;
 
-    public CreatePlayerHandler(BaseballContext dbContext)
+    public DraftPlayerCommandHandler(BaseballContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<Outcome> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
+    public async Task<Outcome> Handle(DraftPlayerCommand request, CancellationToken cancellationToken)
     {
-        // if (request.Player == null) //TODO: look at check for nulls
-        // {
-        //     return new CommonOutcomes.InvalidData("player");
-        // }
-
         var team = await _dbContext.Teams.FirstOrDefaultAsync(x => x.TeamId == request.Player.TeamId,
             cancellationToken);
         if (team == null)
@@ -37,7 +33,6 @@ public class CreatePlayerHandler : IRequestHandler<CreatePlayerCommand, Outcome>
             return new CommonOutcomes.InvalidData("position");
         }
 
-        //TODO: Import automapper
         var player = new Domain.Player
         {
             Bats = request.Player.Bats,
@@ -49,6 +44,10 @@ public class CreatePlayerHandler : IRequestHandler<CreatePlayerCommand, Outcome>
             Position = position,
             EmailAddress = new EmailAddress(request.Player.EmailAddress)
         };
+
+        player.AddDomainEvent(new NewPlayerDomainEvent($"{request.Player.FirstName} {request.Player.LastName}",
+            team.Name));
+
         await _dbContext.AddAsync(player, cancellationToken);
         await _dbContext.SaveChangesAsync(cancellationToken);
 

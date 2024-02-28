@@ -5,6 +5,4 @@ namespace BaseballStatsApi.Application.Queries.Player;
 
 public record GetAllPlayersRequest : IRequest<Outcome>
 {
-    
-    
 }
